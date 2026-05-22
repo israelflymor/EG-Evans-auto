@@ -84,6 +84,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:site_name", content: "McKinney Plumbing Services LLC" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:title", content: "McKinney Plumbing Services LLC — Pennsylvania Plumbing Contractor" },
+      { name: "twitter:title", content: "McKinney Plumbing Services LLC — Pennsylvania Plumbing Contractor" },
+      { name: "description", content: "Service Success Plan creates professional lead-generation websites for local service businesses." },
+      { property: "og:description", content: "Service Success Plan creates professional lead-generation websites for local service businesses." },
+      { name: "twitter:description", content: "Service Success Plan creates professional lead-generation websites for local service businesses." },
     ],
     links: [{ rel: "stylesheet", href: appCss }],
     scripts: [
