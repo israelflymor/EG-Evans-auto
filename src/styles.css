@@ -2,7 +2,7 @@
 @source "../src";
 @import "tw-animate-css";
 
-@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300..900&family=Outfit:wght@100..900&display=swap');
+
 
 @custom-variant dark (&:is(.dark *));
 
@@ -31,26 +31,26 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  /* Brand tokens — Blue-Collar Premium */
+  /* Brand tokens — Charcoal Ember */
   --color-brand-dark: var(--brand-dark);
   --color-brand-mid: var(--brand-mid);
   --color-brand-steel: var(--brand-steel);
   --color-brand-white: var(--brand-white);
   --color-brand-accent: var(--brand-accent);
 
-  --font-heading: 'Outfit', sans-serif;
-  --font-body: 'Figtree', sans-serif;
+  --font-heading: 'Archivo Black', sans-serif;
+  --font-body: 'Hind', sans-serif;
 }
 
 :root {
   --radius: 0.5rem;
 
-  /* Brand palette — Navy Trust */
-  --brand-dark: oklch(0.235 0.072 263);     /* #0f1b3d deep navy */
-  --brand-mid: oklch(0.331 0.072 257);      /* #1e3a5f mid navy */
-  --brand-steel: oklch(0.524 0.097 247);    /* #3b6fa0 steel blue */
-  --brand-white: oklch(0.946 0.008 247);    /* #e8edf3 off white */
-  --brand-accent: oklch(0.704 0.182 41);    /* #f97316 orange */
+  /* Brand palette — Charcoal Ember */
+  --brand-dark: oklch(0.18 0 0);            /* #1a1a1a near-black */
+  --brand-mid: oklch(0.28 0 0);             /* #2d2d2d charcoal */
+  --brand-steel: oklch(0.42 0 0);           /* #4a4a4a steel grey */
+  --brand-white: oklch(0.946 0.008 80);     /* #f0ebe3 warm cream */
+  --brand-accent: oklch(0.665 0.175 38);    /* #e85d3a ember orange */
 
   --background: var(--brand-white);
   --foreground: oklch(0.18 0 0);
@@ -60,17 +60,17 @@
   --popover-foreground: oklch(0.18 0 0);
   --primary: var(--brand-dark);
   --primary-foreground: var(--brand-white);
-  --secondary: oklch(0.968 0.007 247);
+  --secondary: oklch(0.95 0.005 80);
   --secondary-foreground: var(--brand-dark);
-  --muted: oklch(0.96 0.007 247);
-  --muted-foreground: oklch(0.45 0.02 257);
+  --muted: oklch(0.94 0.005 80);
+  --muted-foreground: oklch(0.45 0 0);
   --accent: var(--brand-accent);
-  --accent-foreground: var(--brand-dark);
+  --accent-foreground: var(--brand-white);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.9 0.013 255);
-  --input: oklch(0.9 0.013 255);
-  --ring: var(--brand-steel);
+  --border: oklch(0.88 0.005 80);
+  --input: oklch(0.88 0.005 80);
+  --ring: var(--brand-accent);
 }
 
 .dark {
@@ -85,12 +85,12 @@
   --secondary: var(--brand-mid);
   --secondary-foreground: var(--brand-white);
   --muted: var(--brand-mid);
-  --muted-foreground: oklch(0.7 0.02 257);
+  --muted-foreground: oklch(0.7 0 0);
   --accent: var(--brand-accent);
-  --accent-foreground: var(--brand-dark);
+  --accent-foreground: var(--brand-white);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
-  --ring: var(--brand-steel);
+  --ring: var(--brand-accent);
 }
 
 @layer base {
@@ -106,5 +106,7 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
+    font-weight: 400;
+    letter-spacing: -0.01em;
   }
 }
