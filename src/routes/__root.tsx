@@ -11,20 +11,21 @@ import {
 import appCss from "../styles.css?url";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
+import { business } from "@/config/business";
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-brand-white px-4">
+    <div className="flex min-h-screen items-center justify-center bg-brand-midnight px-4">
       <div className="max-w-md text-center">
-        <h1 className="text-7xl font-heading text-brand-dark">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-brand-dark">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
+        <h1 className="text-7xl font-display text-gradient-sunset">404</h1>
+        <h2 className="mt-4 text-xl font-display text-brand-white">Page not found</h2>
+        <p className="mt-2 text-sm text-brand-white/60">
           The page you're looking for doesn't exist or has been moved.
         </p>
         <div className="mt-6">
           <Link
             to="/"
-            className="inline-flex items-center justify-center bg-brand-accent px-6 py-3 text-sm font-heading text-brand-dark tracking-widest uppercase hover:bg-brand-accent/90 transition-colors"
+            className="inline-flex items-center justify-center gradient-sunset px-6 py-3 text-sm font-display text-brand-midnight hover:brightness-110 transition"
           >
             Go home
           </Link>
@@ -39,12 +40,10 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   const router = useRouter();
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-brand-white px-4">
+    <div className="flex min-h-screen items-center justify-center bg-brand-midnight px-4">
       <div className="max-w-md text-center">
-        <h1 className="text-xl font-heading tracking-tight text-brand-dark">
-          This page didn't load
-        </h1>
-        <p className="mt-2 text-sm text-muted-foreground">
+        <h1 className="text-2xl font-display text-brand-white">This page didn't load</h1>
+        <p className="mt-2 text-sm text-brand-white/60">
           Something went wrong on our end. Try refreshing or head back home.
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
@@ -53,13 +52,13 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
               router.invalidate();
               reset();
             }}
-            className="inline-flex items-center justify-center bg-brand-accent px-6 py-3 text-sm font-heading text-brand-dark tracking-widest uppercase hover:bg-brand-accent/90 transition-colors"
+            className="inline-flex items-center justify-center gradient-sunset px-6 py-3 text-sm font-display text-brand-midnight hover:brightness-110 transition"
           >
             Try again
           </button>
           <a
             href="/"
-            className="inline-flex items-center justify-center border border-brand-dark/20 bg-transparent px-6 py-3 text-sm font-heading text-brand-dark tracking-widest uppercase hover:bg-brand-dark/5 transition-colors"
+            className="inline-flex items-center justify-center border border-white/20 bg-transparent px-6 py-3 text-sm font-display text-brand-white hover:bg-white/5 transition"
           >
             Go home
           </a>
@@ -74,14 +73,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "EG Evans Auto Services LLC — Auto Repair in Dahlonega, GA" },
+      { title: `${business.legalName} — Coastal Luxury Auto Care · ${business.address.city}, ${business.address.region}` },
       {
         name: "description",
-        content:
-          "EG Evans Auto Services LLC — general auto repair and diagnostics in Dahlonega, Georgia, serving Lumpkin County and North Georgia.",
+        content: `${business.legalName} delivers concierge-grade auto repair, diagnostics, and maintenance in ${business.address.city}, ${business.address.region}. Serving ${business.serviceArea.secondary}.`,
       },
-      { name: "theme-color", content: "#1a1a1a" },
-      { property: "og:site_name", content: "EG Evans Auto Services LLC" },
+      { name: "theme-color", content: "#0A0A14" },
+      { property: "og:site_name", content: business.legalName },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -89,7 +87,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Archivo+Black&family=Hind:wght@300;400;500;600;700&display=swap" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap",
+      },
     ],
     scripts: [
       {
@@ -97,21 +98,23 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "AutoRepair",
-          name: "EG Evans Auto Services LLC",
-          founder: "Elizabeth Evans",
+          name: business.legalName,
+          founder: business.owner,
+          telephone: business.phoneDisplay,
+          email: business.email,
           address: {
             "@type": "PostalAddress",
-            streetAddress: "321 Waterloo Dr",
-            addressLocality: "Dahlonega",
-            addressRegion: "GA",
-            postalCode: "30533",
-            addressCountry: "US",
+            streetAddress: business.address.street,
+            addressLocality: business.address.city,
+            addressRegion: business.address.region,
+            postalCode: business.address.postalCode,
+            addressCountry: business.address.country,
           },
-          areaServed: [
-            { "@type": "City", name: "Dahlonega" },
-            { "@type": "AdministrativeArea", name: "Lumpkin County" },
-          ],
-          url: "https://egevansauto.lovable.app/",
+          areaServed: business.serviceArea.cities.map((c) => ({
+            "@type": "City",
+            name: c,
+          })),
+          url: business.siteUrl,
         }),
       },
     ],
@@ -143,7 +146,7 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <div className="min-h-screen flex flex-col bg-brand-white text-foreground font-body">
         <SiteHeader />
-        <main className="flex-1 pt-20">
+        <main className="flex-1">
           <Outlet />
         </main>
         <SiteFooter />
