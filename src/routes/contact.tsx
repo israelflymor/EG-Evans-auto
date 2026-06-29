@@ -1,66 +1,105 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { QuoteForm } from "@/components/site/QuoteForm";
+import { business } from "@/config/business";
+
+type ContactSearch = { vehicle?: string };
 
 export const Route = createFileRoute("/contact")({
+  validateSearch: (s: Record<string, unknown>): ContactSearch => ({
+    vehicle: typeof s.vehicle === "string" ? s.vehicle : undefined,
+  }),
   head: () => ({
     meta: [
-      { title: "Book Service — EG Evans Auto Services, Dahlonega GA" },
+      { title: `Book Service — ${business.legalName}` },
       {
         name: "description",
-        content:
-          "Request service or a quote from EG Evans Auto Services in Dahlonega, GA. Tell us about your vehicle and we'll get back to you.",
+        content: `Request service or a quote from ${business.legalName} in ${business.address.city}, ${business.address.region}. Tell us about your vehicle and we'll get back to you.`,
       },
-      { property: "og:title", content: "Book Service — EG Evans Auto Services" },
-      { property: "og:description", content: "Auto repair requests for drivers in Dahlonega and Lumpkin County, GA." },
-      { property: "og:url", content: "/contact" },
+      { property: "og:title", content: `Book Service — ${business.legalName}` },
+      { property: "og:description", content: `Auto repair requests for drivers in ${business.serviceArea.secondary}.` },
+      { property: "og:url", content: `${business.siteUrl}/contact` },
     ],
-    links: [{ rel: "canonical", href: "/contact" }],
+    links: [{ rel: "canonical", href: `${business.siteUrl}/contact` }],
   }),
   component: ContactPage,
 });
 
 function ContactPage() {
-  return (
-    <section className="py-24 px-6 bg-brand-white">
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16">
-        <div className="w-full lg:w-1/3">
-          <span className="text-brand-accent font-heading text-[10px] tracking-widest uppercase mb-4 block">
-            Contact
-          </span>
-          <h1 className="font-heading text-4xl md:text-5xl tracking-tight text-brand-dark mb-6 uppercase">
-            Book a Service
-          </h1>
-          <p className="text-muted-foreground mb-10 leading-relaxed">
-            Tell us about your vehicle and what's going on. The more detail you can give (year, make, model, symptoms), the faster we can give you a useful answer.
-          </p>
+  const { vehicle } = Route.useSearch();
 
-          <div className="space-y-6 pt-8 border-t border-black/10">
-            <div>
-              <p className="text-[10px] uppercase tracking-widest font-bold text-zinc-500 mb-1">Visit</p>
-              <address className="not-italic text-sm font-medium text-brand-dark leading-relaxed">
-                321 Waterloo Dr<br />
-                Dahlonega, GA 30533
-              </address>
-            </div>
-            <div>
-              <p className="text-[10px] uppercase tracking-widest font-bold text-zinc-500 mb-1">Phone</p>
-              <p className="text-sm text-brand-dark">(XXX) XXX-XXXX</p>
-            </div>
-            <div>
-              <p className="text-[10px] uppercase tracking-widest font-bold text-zinc-500 mb-1">Email</p>
-              <p className="text-sm text-brand-dark">hello@egevansauto.com</p>
-            </div>
-            <div>
-              <p className="text-[10px] uppercase tracking-widest font-bold text-zinc-500 mb-1">Service Area</p>
-              <p className="text-sm text-brand-dark">Dahlonega, Lumpkin County & North Georgia</p>
+  return (
+    <>
+      <section className="bg-brand-midnight text-brand-white pt-40 pb-20 px-6 relative overflow-hidden">
+        <div className="absolute -top-40 -right-40 size-[500px] gradient-sunset opacity-20 blur-[120px]" />
+        <div className="relative max-w-7xl mx-auto">
+          <div className="inline-flex items-center gap-3 mb-6">
+            <span className="h-px w-10 gradient-sunset" />
+            <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-brand-sunset">
+              Contact
+            </span>
+          </div>
+          <h1 className="font-display text-5xl md:text-7xl tracking-tighter mb-6 text-balance leading-[0.95]">
+            Let's get your <span className="italic text-gradient-sunset">car looked at</span>.
+          </h1>
+        </div>
+      </section>
+
+      <section className="py-24 px-6 bg-brand-white">
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16">
+          <div className="w-full lg:w-1/3">
+            <p className="text-brand-midnight/65 mb-10 leading-relaxed">
+              Tell us about your vehicle and what's going on. The more detail you give (year, make, model, symptoms), the faster we can give you a useful answer.
+            </p>
+
+            <div className="space-y-8 pt-8 border-t border-brand-midnight/10">
+              <InfoBlock label="Visit">
+                <address className="not-italic text-sm font-medium text-brand-midnight leading-relaxed">
+                  {business.address.street}<br />
+                  {business.address.city}, {business.address.region} {business.address.postalCode}
+                </address>
+              </InfoBlock>
+              <InfoBlock label="Phone">
+                <a href={business.phoneHref} className="text-sm text-brand-midnight hover:text-brand-sunset-deep transition">
+                  {business.phoneDisplay}
+                </a>
+              </InfoBlock>
+              <InfoBlock label="Email">
+                <a href={`mailto:${business.email}`} className="text-sm text-brand-midnight hover:text-brand-sunset-deep transition">
+                  {business.email}
+                </a>
+              </InfoBlock>
+              <InfoBlock label="Hours">
+                <ul className="space-y-1.5 text-sm text-brand-midnight">
+                  {business.hours.map((h) => (
+                    <li key={h.day} className="flex justify-between gap-6">
+                      <span className="text-brand-midnight/50">{h.day}</span>
+                      <span>{h.time}</span>
+                    </li>
+                  ))}
+                </ul>
+              </InfoBlock>
+              <InfoBlock label="Service Area">
+                <p className="text-sm text-brand-midnight">{business.serviceArea.primary} · {business.serviceArea.secondary}</p>
+              </InfoBlock>
             </div>
           </div>
-        </div>
 
-        <div className="w-full lg:w-2/3">
-          <QuoteForm />
+          <div className="w-full lg:w-2/3">
+            <QuoteForm defaultVehicle={vehicle ?? ""} />
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
+  );
+}
+
+function InfoBlock({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <div>
+      <p className="text-[10px] uppercase tracking-[0.25em] font-mono text-brand-midnight/50 mb-2">
+        {label}
+      </p>
+      {children}
+    </div>
   );
 }

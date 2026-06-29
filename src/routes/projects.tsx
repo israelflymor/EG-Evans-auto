@@ -1,97 +1,78 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import project1 from "@/assets/project-1.jpg";
-import project2 from "@/assets/project-2.jpg";
-import project3 from "@/assets/project-3.jpg";
+import { business, projects } from "@/config/business";
 
 export const Route = createFileRoute("/projects")({
   head: () => ({
     meta: [
-      { title: "Work — EG Evans Auto Services, Dahlonega GA" },
+      { title: `Work — ${business.legalName}` },
       {
         name: "description",
-        content:
-          "A look at recent repair, diagnostics, and maintenance work performed at EG Evans Auto Services in Dahlonega, Georgia.",
+        content: `A look at recent repair, diagnostics, and maintenance work performed at ${business.legalName} in ${business.address.city}, ${business.address.region}.`,
       },
-      { property: "og:title", content: "Work — EG Evans Auto Services" },
-      { property: "og:description", content: "Recent auto repair and diagnostic work." },
-      { property: "og:url", content: "/projects" },
-      { property: "og:image", content: project1 },
+      { property: "og:title", content: `Work — ${business.legalName}` },
+      { property: "og:description", content: "Recent auto repair and diagnostic case studies." },
+      { property: "og:url", content: `${business.siteUrl}/projects` },
+      { property: "og:image", content: projects[0].img },
     ],
-    links: [{ rel: "canonical", href: "/projects" }],
+    links: [{ rel: "canonical", href: `${business.siteUrl}/projects` }],
   }),
   component: ProjectsPage,
 });
 
-const projects = [
-  {
-    img: project1,
-    title: "Engine Bay Service",
-    tag: "Repair",
-    body: "Belt, hose, and sensor work performed with precision torque and a careful walk-through with the owner before pickup.",
-  },
-  {
-    img: project2,
-    title: "Brake System Overhaul",
-    tag: "Safety",
-    body: "Full pad, rotor, and caliper replacement on a daily-driven SUV — restored stopping power and pedal feel.",
-  },
-  {
-    img: project3,
-    title: "OBD-II Diagnostics",
-    tag: "Diagnostics",
-    body: "Traced an intermittent check-engine light to a failing sensor instead of swapping parts on guesswork.",
-  },
-];
-
 function ProjectsPage() {
   return (
     <>
-      <section className="bg-brand-dark text-brand-white py-24 px-6">
-        <div className="max-w-7xl mx-auto">
-          <span className="text-brand-accent font-heading text-[10px] tracking-widest uppercase mb-6 block">
-            Recent Work
-          </span>
-          <h1 className="font-heading text-4xl md:text-6xl tracking-tighter mb-6 text-balance uppercase">
-            What's been in the bay.
+      <section className="bg-brand-midnight text-brand-white pt-40 pb-24 px-6 relative overflow-hidden">
+        <div className="absolute -top-40 -right-40 size-[500px] gradient-sunset opacity-20 blur-[120px]" />
+        <div className="relative max-w-7xl mx-auto">
+          <div className="inline-flex items-center gap-3 mb-6">
+            <span className="h-px w-10 gradient-sunset" />
+            <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-brand-sunset">
+              Case Studies
+            </span>
+          </div>
+          <h1 className="font-display text-5xl md:text-7xl lg:text-8xl tracking-tighter mb-8 text-balance leading-[0.95]">
+            What's been <span className="italic text-gradient-sunset">in the bay</span>.
           </h1>
           <p className="text-brand-white/70 max-w-2xl text-lg leading-relaxed">
-            A small selection of recent jobs from the shop.
+            A small selection of recent jobs from the shop floor.
           </p>
         </div>
       </section>
 
-      <section className="py-24 px-6 bg-brand-white">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <section className="py-28 px-6 bg-brand-white">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {projects.map((p) => (
-            <article key={p.title} className="space-y-4">
-              <img
-                src={p.img}
-                alt={p.title}
-                width={1024}
-                height={768}
-                loading="lazy"
-                className="w-full aspect-[4/3] object-cover"
-              />
-              <div>
-                <p className="text-[10px] uppercase tracking-widest text-brand-accent font-heading mb-1">
-                  {p.tag}
-                </p>
-                <h2 className="font-heading text-xl text-brand-dark mb-2 uppercase">{p.title}</h2>
-                <p className="text-sm text-muted-foreground leading-relaxed">{p.body}</p>
+            <article key={p.title} className="group">
+              <div className="overflow-hidden mb-5">
+                <img
+                  src={p.img}
+                  alt={p.title}
+                  width={1280}
+                  height={960}
+                  loading="lazy"
+                  className="w-full aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-105"
+                />
               </div>
+              <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-brand-sunset-deep mb-2">
+                {p.tag}
+              </p>
+              <h2 className="font-display text-2xl text-brand-midnight mb-2">{p.title}</h2>
+              <p className="text-sm text-brand-midnight/65 leading-relaxed">{p.caption}</p>
             </article>
           ))}
         </div>
       </section>
 
-      <section className="py-24 px-6 bg-brand-dark border-t border-white/5">
+      <section className="py-28 px-6 bg-brand-midnight border-t border-white/10">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="font-heading text-3xl md:text-4xl text-brand-white mb-6 uppercase">
+          <h2 className="font-display text-4xl md:text-5xl text-brand-white mb-8 text-balance">
             Bring us yours.
           </h2>
           <Link
             to="/contact"
-            className="inline-block bg-brand-accent text-brand-dark font-heading px-12 py-5 hover:bg-brand-accent/90 transition-colors uppercase tracking-widest text-sm"
+            className="inline-block gradient-sunset text-brand-midnight font-display px-12 py-5 hover:brightness-110 transition text-base"
+            style={{ boxShadow: "var(--shadow-sunset)" }}
           >
             Book Service
           </Link>

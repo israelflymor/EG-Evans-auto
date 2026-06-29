@@ -2,8 +2,6 @@
 @source "../src";
 @import "tw-animate-css";
 
-
-
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -31,66 +29,76 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  /* Brand tokens — Charcoal Ember */
-  --color-brand-dark: var(--brand-dark);
-  --color-brand-mid: var(--brand-mid);
-  --color-brand-steel: var(--brand-steel);
+  /* Brand tokens — Miami Coastal Luxury */
+  --color-brand-midnight: var(--brand-midnight);
+  --color-brand-onyx: var(--brand-onyx);
+  --color-brand-ink: var(--brand-ink);
+  --color-brand-mist: var(--brand-mist);
   --color-brand-white: var(--brand-white);
-  --color-brand-accent: var(--brand-accent);
+  --color-brand-sunset: var(--brand-sunset);
+  --color-brand-sunset-deep: var(--brand-sunset-deep);
 
-  --font-heading: 'Archivo Black', sans-serif;
-  --font-body: 'Hind', sans-serif;
+  --font-display: 'Playfair Display', serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Signature gradient */
+  --gradient-sunset: linear-gradient(135deg, #FFD23F 0%, #FF8A3D 60%, #FF3D77 100%);
+  --shadow-luxe: 0 30px 80px -20px rgb(0 0 0 / 0.6);
+  --shadow-sunset: 0 20px 60px -15px color-mix(in oklab, #FFD23F 50%, transparent);
 }
 
 :root {
-  --radius: 0.5rem;
+  --radius: 0.25rem;
 
-  /* Brand palette — Charcoal Ember */
-  --brand-dark: oklch(0.18 0 0);            /* #1a1a1a near-black */
-  --brand-mid: oklch(0.28 0 0);             /* #2d2d2d charcoal */
-  --brand-steel: oklch(0.42 0 0);           /* #4a4a4a steel grey */
-  --brand-white: oklch(0.946 0.008 80);     /* #f0ebe3 warm cream */
-  --brand-accent: oklch(0.665 0.175 38);    /* #e85d3a ember orange */
+  /* Palette */
+  --brand-midnight: oklch(0.10 0.015 270);   /* #0A0A14 deep midnight */
+  --brand-onyx: oklch(0.16 0.012 270);       /* #15151F onyx */
+  --brand-ink: oklch(0.28 0.008 270);        /* charcoal */
+  --brand-mist: oklch(0.96 0.005 260);       /* near-white mist */
+  --brand-white: oklch(1 0 0);               /* crisp white */
+  --brand-sunset: oklch(0.86 0.165 92);      /* #FFD23F miami sunset */
+  --brand-sunset-deep: oklch(0.72 0.18 60);  /* deep amber */
 
   --background: var(--brand-white);
-  --foreground: oklch(0.18 0 0);
+  --foreground: var(--brand-midnight);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.18 0 0);
+  --card-foreground: var(--brand-midnight);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.18 0 0);
-  --primary: var(--brand-dark);
+  --popover-foreground: var(--brand-midnight);
+  --primary: var(--brand-midnight);
   --primary-foreground: var(--brand-white);
-  --secondary: oklch(0.95 0.005 80);
-  --secondary-foreground: var(--brand-dark);
-  --muted: oklch(0.94 0.005 80);
-  --muted-foreground: oklch(0.45 0 0);
-  --accent: var(--brand-accent);
-  --accent-foreground: var(--brand-white);
+  --secondary: var(--brand-mist);
+  --secondary-foreground: var(--brand-midnight);
+  --muted: oklch(0.95 0.005 260);
+  --muted-foreground: oklch(0.45 0.01 270);
+  --accent: var(--brand-sunset);
+  --accent-foreground: var(--brand-midnight);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.88 0.005 80);
-  --input: oklch(0.88 0.005 80);
-  --ring: var(--brand-accent);
+  --border: oklch(0.9 0.005 260);
+  --input: oklch(0.92 0.005 260);
+  --ring: var(--brand-sunset);
 }
 
 .dark {
-  --background: var(--brand-dark);
+  --background: var(--brand-midnight);
   --foreground: var(--brand-white);
-  --card: var(--brand-mid);
+  --card: var(--brand-onyx);
   --card-foreground: var(--brand-white);
-  --popover: var(--brand-mid);
+  --popover: var(--brand-onyx);
   --popover-foreground: var(--brand-white);
-  --primary: var(--brand-accent);
-  --primary-foreground: var(--brand-dark);
-  --secondary: var(--brand-mid);
+  --primary: var(--brand-sunset);
+  --primary-foreground: var(--brand-midnight);
+  --secondary: var(--brand-onyx);
   --secondary-foreground: var(--brand-white);
-  --muted: var(--brand-mid);
+  --muted: var(--brand-onyx);
   --muted-foreground: oklch(0.7 0 0);
-  --accent: var(--brand-accent);
-  --accent-foreground: var(--brand-white);
+  --accent: var(--brand-sunset);
+  --accent-foreground: var(--brand-midnight);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
-  --ring: var(--brand-accent);
+  --ring: var(--brand-sunset);
 }
 
 @layer base {
@@ -102,11 +110,27 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-body);
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-heading);
-    font-weight: 400;
-    letter-spacing: -0.01em;
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.02em;
   }
+
+  .font-display { font-family: var(--font-display); }
+  .font-mono { font-family: var(--font-mono); }
+}
+
+@utility gradient-sunset {
+  background-image: var(--gradient-sunset);
+}
+
+@utility text-gradient-sunset {
+  background-image: var(--gradient-sunset);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }

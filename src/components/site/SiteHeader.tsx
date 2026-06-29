@@ -1,8 +1,10 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
+import { business } from "@/config/business";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -11,6 +13,13 @@ export function SiteHeader() {
     };
   }, [open]);
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   const navLinks = [
     { to: "/services", label: "Services" },
     { to: "/projects", label: "Work" },
@@ -18,31 +27,45 @@ export function SiteHeader() {
   ] as const;
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-brand-dark/95 backdrop-blur-md border-b border-white/5 h-20">
+    <nav
+      className={`fixed top-0 w-full z-50 transition-all duration-300 h-20 ${
+        scrolled
+          ? "bg-brand-midnight/85 backdrop-blur-xl border-b border-white/10"
+          : "bg-transparent border-b border-transparent"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
         <Link to="/" className="flex items-center gap-3 group">
-          <div className="size-9 bg-brand-accent flex items-center justify-center">
-            <span className="text-brand-dark font-heading text-lg leading-none">EG</span>
+          <div className="relative size-10 flex items-center justify-center">
+            <div className="absolute inset-0 gradient-sunset" />
+            <span className="relative text-brand-midnight font-display text-lg leading-none">
+              {business.initials}
+            </span>
           </div>
-          <span className="font-heading text-base tracking-tight text-brand-white hidden sm:inline">
-            EVANS AUTO
-          </span>
+          <div className="hidden sm:flex flex-col leading-tight">
+            <span className="font-display text-base text-brand-white tracking-tight">
+              {business.shortName}
+            </span>
+            <span className="font-mono text-[9px] tracking-[0.25em] uppercase text-brand-white/50">
+              {business.address.city}, {business.address.region}
+            </span>
+          </div>
         </Link>
 
-        <div className="hidden md:flex items-center gap-8 text-sm font-medium text-brand-white/80">
+        <div className="hidden md:flex items-center gap-10">
           {navLinks.map((l) => (
             <Link
               key={l.to}
               to={l.to}
-              className="hover:text-brand-white transition-colors uppercase tracking-wider text-xs"
-              activeProps={{ className: "text-brand-accent" }}
+              className="text-[12px] font-mono tracking-[0.2em] uppercase text-brand-white/70 hover:text-brand-sunset transition-colors"
+              activeProps={{ className: "text-brand-sunset" }}
             >
               {l.label}
             </Link>
           ))}
           <Link
             to="/contact"
-            className="bg-brand-accent text-brand-dark font-heading text-xs uppercase tracking-wider px-5 py-3 hover:bg-brand-accent/90 transition-colors"
+            className="gradient-sunset text-brand-midnight font-display text-sm px-6 py-3 hover:brightness-110 transition"
           >
             Book Service
           </Link>
@@ -65,13 +88,13 @@ export function SiteHeader() {
       </div>
 
       {open && (
-        <div className="md:hidden absolute top-20 left-0 right-0 bg-brand-dark border-b border-white/5 px-6 py-8 flex flex-col gap-6">
+        <div className="md:hidden absolute top-20 left-0 right-0 bg-brand-midnight border-b border-white/10 px-6 py-8 flex flex-col gap-6">
           {navLinks.map((l) => (
             <Link
               key={l.to}
               to={l.to}
               onClick={() => setOpen(false)}
-              className="text-brand-white/80 hover:text-brand-white text-base uppercase tracking-wider font-heading"
+              className="text-brand-white/80 hover:text-brand-sunset text-base font-mono tracking-[0.2em] uppercase"
             >
               {l.label}
             </Link>
@@ -79,7 +102,7 @@ export function SiteHeader() {
           <Link
             to="/contact"
             onClick={() => setOpen(false)}
-            className="text-brand-accent text-base font-heading uppercase tracking-wider"
+            className="gradient-sunset text-brand-midnight font-display text-base px-6 py-4 text-center"
           >
             Book Service
           </Link>
