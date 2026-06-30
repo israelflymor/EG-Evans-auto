@@ -3,6 +3,7 @@ import heroImg from "@/assets/hero.jpg";
 import aboutImg from "@/assets/about-team.jpg";
 import { business, services, projects } from "@/config/business";
 import { PartFinder } from "@/components/site/PartFinder";
+import { Testimonials } from "@/components/site/Testimonials";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -218,6 +219,9 @@ function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* TESTIMONIALS */}
+      <Testimonials variant="light" />
 
       {/* CTA */}
       <section className="relative py-28 px-6 bg-brand-midnight overflow-hidden">

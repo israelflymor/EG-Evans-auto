@@ -11,7 +11,7 @@ import {
 import appCss from "../styles.css?url";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
-import { business } from "@/config/business";
+import { business, testimonials } from "@/config/business";
 
 function NotFoundComponent() {
   return (
@@ -115,6 +115,26 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             name: c,
           })),
           url: business.siteUrl,
+          aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: (
+              testimonials.reduce((s, t) => s + t.rating, 0) / testimonials.length
+            ).toFixed(1),
+            reviewCount: testimonials.length,
+            bestRating: 5,
+            worstRating: 1,
+          },
+          review: testimonials.map((t) => ({
+            "@type": "Review",
+            author: { "@type": "Person", name: t.name },
+            datePublished: t.date,
+            reviewRating: {
+              "@type": "Rating",
+              ratingValue: t.rating,
+              bestRating: 5,
+            },
+            reviewBody: t.quote,
+          })),
         }),
       },
     ],
