@@ -5,6 +5,7 @@ import {
   partFinderMakes,
   partFinderModels,
 } from "@/config/business";
+import { trackEvent } from "@/lib/analytics";
 
 type Props = {
   variant?: "hero" | "inline";
@@ -24,6 +25,12 @@ export function PartFinder({ variant = "hero" }: Props) {
   function onSubmit(e: FormEvent) {
     e.preventDefault();
     const vehicle = [year, make, model].filter(Boolean).join(" ");
+    trackEvent("part_finder_submit", {
+      year: year || "none",
+      make: make || "none",
+      model: model || "none",
+      variant,
+    });
     void navigate({
       to: "/contact",
       search: { vehicle: vehicle || undefined } as never,

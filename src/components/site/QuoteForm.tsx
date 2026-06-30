@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from "react";
 import { services } from "@/config/business";
+import { trackEvent } from "@/lib/analytics";
 
 type Props = {
   defaultVehicle?: string;
@@ -10,6 +11,12 @@ export function QuoteForm({ defaultVehicle = "" }: Props) {
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    const fd = new FormData(e.currentTarget);
+    trackEvent("quote_form_submit", {
+      service: String(fd.get("scope") ?? ""),
+      hasVehicle: Boolean(fd.get("vehicle")),
+      prefillVehicle: Boolean(defaultVehicle),
+    });
     setSubmitted(true);
   }
 
