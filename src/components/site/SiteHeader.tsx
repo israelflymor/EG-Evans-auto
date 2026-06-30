@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { business } from "@/config/business";
+import { trackEvent } from "@/lib/analytics";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
@@ -63,8 +64,16 @@ export function SiteHeader() {
               {l.label}
             </Link>
           ))}
+          <a
+            href={business.phoneHref}
+            onClick={() => trackEvent("phone_click", { source: "header", value: business.phoneDisplay })}
+            className="hidden lg:inline text-[12px] font-mono tracking-[0.2em] uppercase text-brand-white/70 hover:text-brand-sunset transition-colors"
+          >
+            {business.phoneDisplay}
+          </a>
           <Link
             to="/contact"
+            onClick={() => trackEvent("cta_click", { source: "header", label: "Book Service" })}
             className="gradient-sunset text-brand-midnight font-display text-sm px-6 py-3 hover:brightness-110 transition"
           >
             Book Service

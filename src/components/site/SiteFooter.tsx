@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { business } from "@/config/business";
+import { trackContactClick } from "@/lib/analytics";
 
 export function SiteFooter() {
   return (
@@ -32,11 +33,19 @@ export function SiteFooter() {
             {business.address.street}<br />
             {business.address.city}, {business.address.region} {business.address.postalCode}
           </address>
-          <a href={business.phoneHref} className="block text-brand-white hover:text-brand-sunset text-sm transition">
+          <a
+            href={business.phoneHref}
+            onClick={() => trackContactClick("phone", business.phoneDisplay)}
+            className="block text-brand-white hover:text-brand-sunset text-sm transition"
+          >
             <span className="block text-brand-white/40 text-[10px] uppercase tracking-[0.25em] mb-1 font-mono">Phone</span>
             {business.phoneDisplay}
           </a>
-          <a href={`mailto:${business.email}`} className="block mt-3 text-brand-white hover:text-brand-sunset text-sm transition">
+          <a
+            href={`mailto:${business.email}`}
+            onClick={() => trackContactClick("email", business.email)}
+            className="block mt-3 text-brand-white hover:text-brand-sunset text-sm transition"
+          >
             <span className="block text-brand-white/40 text-[10px] uppercase tracking-[0.25em] mb-1 font-mono">Email</span>
             {business.email}
           </a>

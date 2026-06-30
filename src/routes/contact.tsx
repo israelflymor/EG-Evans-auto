@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { QuoteForm } from "@/components/site/QuoteForm";
 import { business } from "@/config/business";
+import { trackContactClick } from "@/lib/analytics";
 
 type ContactSearch = { vehicle?: string };
 
@@ -59,12 +60,20 @@ function ContactPage() {
                 </address>
               </InfoBlock>
               <InfoBlock label="Phone">
-                <a href={business.phoneHref} className="text-sm text-brand-midnight hover:text-brand-sunset-deep transition">
+                <a
+                  href={business.phoneHref}
+                  onClick={() => trackContactClick("phone", business.phoneDisplay)}
+                  className="text-sm text-brand-midnight hover:text-brand-sunset-deep transition"
+                >
                   {business.phoneDisplay}
                 </a>
               </InfoBlock>
               <InfoBlock label="Email">
-                <a href={`mailto:${business.email}`} className="text-sm text-brand-midnight hover:text-brand-sunset-deep transition">
+                <a
+                  href={`mailto:${business.email}`}
+                  onClick={() => trackContactClick("email", business.email)}
+                  className="text-sm text-brand-midnight hover:text-brand-sunset-deep transition"
+                >
                   {business.email}
                 </a>
               </InfoBlock>
