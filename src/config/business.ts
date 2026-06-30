@@ -89,7 +89,38 @@ export const services = [
   },
 ] as const;
 
-// --- Project / case-study showcase ---
+// --- Testimonials / reviews ---
+// Add, edit, or remove entries here — they render on the home page,
+// power the testimonials section, and feed schema.org Review markup.
+export const testimonials = [
+  {
+    name: "Jordan M.",
+    location: "Dahlonega, GA",
+    vehicle: "2019 Ford F-150",
+    rating: 5,
+    quote:
+      "Elizabeth walked me through every line of the quote before touching the truck. No surprises, no upsell — just honest work done right the first time.",
+    date: "2025-09-14",
+  },
+  {
+    name: "Priya S.",
+    location: "Dawsonville, GA",
+    vehicle: "2021 Toyota RAV4",
+    rating: 5,
+    quote:
+      "Chased a check-engine light at two other shops before EG Evans diagnosed it in an hour. Felt like the only customer in the place.",
+    date: "2025-08-02",
+  },
+  {
+    name: "Marcus T.",
+    location: "Cleveland, GA",
+    vehicle: "2017 Jeep Wrangler",
+    rating: 5,
+    quote:
+      "Brake job came back better than factory. Pickup bay was spotless and they even washed the rims. Concierge-grade is the right word.",
+    date: "2025-06-21",
+  },
+] as const;
 import project1 from "@/assets/project-1.jpg";
 import project2 from "@/assets/project-2.jpg";
 import project3 from "@/assets/project-3.jpg";
