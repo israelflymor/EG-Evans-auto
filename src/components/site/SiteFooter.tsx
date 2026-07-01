@@ -82,9 +82,12 @@ export function SiteFooter() {
         <p className="text-brand-white/40 text-[11px] tracking-widest uppercase font-mono">
           &copy; {new Date().getFullYear()} {business.legalName}
         </p>
-        <p className="text-brand-white/40 text-[11px] tracking-widest uppercase font-mono">
-          {business.address.city}, {business.address.region} · {business.serviceArea.secondary}
-        </p>
+        <ul className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-[11px] tracking-widest uppercase font-mono">
+          <li><Link to="/privacy" className="text-brand-white/40 hover:text-brand-sunset transition">Privacy</Link></li>
+          <li><Link to="/terms" className="text-brand-white/40 hover:text-brand-sunset transition">Terms</Link></li>
+          <li><Link to="/cookies" className="text-brand-white/40 hover:text-brand-sunset transition">Cookies</Link></li>
+          <li><Link to="/accessibility" className="text-brand-white/40 hover:text-brand-sunset transition">Accessibility</Link></li>
+        </ul>
       </div>
     </footer>
   );
