@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
-import { business } from "@/config/business";
+import { workshopTools, workshopStats } from "@/config/business";
 
-const workshops = business.workshopTools;
+const workshops = workshopTools;
 
 export function WorkshopGallery() {
   return (
