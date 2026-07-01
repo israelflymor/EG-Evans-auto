@@ -124,6 +124,10 @@ export const testimonials = [
 import project1 from "@/assets/project-1.jpg";
 import project2 from "@/assets/project-2.jpg";
 import project3 from "@/assets/project-3.jpg";
+import workshopDiagnostics from "@/assets/workshop-diagnostics.jpg";
+import workshopTools from "@/assets/workshop-tools.jpg";
+import workshopProtection from "@/assets/workshop-protection.jpg";
+
 
 export const projects = [
   {
