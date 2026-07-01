@@ -60,7 +60,7 @@ export function WorkshopGallery() {
 
           {/* Side Stack */}
           <div className="md:col-span-4 flex flex-col gap-4">
-            {workshops.slice(1).map((item, idx) => (
+            {workshops.slice(1).map((item: { img: string; title: string; system: string }, idx: number) => (
               <div
                 key={item.title}
                 className="flex-1 relative group overflow-hidden rounded-sm bg-brand-onyx border border-white/5 min-h-[260px]"
