@@ -93,7 +93,7 @@ export function WorkshopGallery() {
         {/* Technical Footer */}
         <div className="mt-8 flex flex-col md:flex-row gap-8 items-center justify-between">
           <div className="flex flex-wrap gap-12">
-            {business.workshopStats.map((stat) => (
+            {workshopStats.map((stat: { label: string; value: string }) => (
               <div key={stat.label} className="space-y-1">
                 <p className="font-mono text-[10px] text-brand-white/40 uppercase tracking-[0.2em]">
                   {stat.label}
