@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import aboutImg from "@/assets/about-team.jpg";
 import { business } from "@/config/business";
 import { Testimonials } from "@/components/site/Testimonials";
+import { WorkshopGallery } from "@/components/site/WorkshopGallery";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -76,7 +77,10 @@ function AboutPage() {
         </div>
       </section>
 
+      <WorkshopGallery />
+
       <Testimonials variant="light" />
+
 
       <section className="py-28 px-6 bg-brand-midnight border-t border-white/10">
         <div className="max-w-3xl mx-auto text-center">
