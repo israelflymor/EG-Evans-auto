@@ -153,19 +153,19 @@ export const projects = [
 // Configurable entries for the About page "Inside the Laboratory" section.
 export const workshopTools = [
   {
-    img: workshopDiagnostics,
+    img: workshopDiagnosticsImg,
     title: "Digital Telemetry Suite",
     system: "System 01",
     tags: ["Real-time Analysis", "ECU Mapping"],
   },
   {
-    img: workshopTools,
+    img: workshopToolsImg,
     title: "Artisan Hand-Tools",
     system: "Precision",
     tags: ["Micron-level Accuracy"],
   },
   {
-    img: workshopProtection,
+    img: workshopProtectionImg,
     title: "Protective Finish Lab",
     system: "Defense",
     tags: ["Coatings & Rust Prevention"],
