@@ -2,16 +2,27 @@ import { createFileRoute } from "@tanstack/react-router";
 import { LegalLayout, LegalSection } from "@/components/site/LegalLayout";
 import { business } from "@/config/business";
 
+const CANONICAL = `${business.siteUrl}/accessibility`;
+
 export const Route = createFileRoute("/accessibility")({
   head: () => ({
     meta: [
-      { title: `Accessibility Statement — ${business.legalName}` },
+      { title: `Accessibility Statement — ${business.legalName} | ${business.address.city}, ${business.address.region}` },
       {
         name: "description",
-        content: `${business.legalName} accessibility statement and commitments.`,
+        content: `${business.legalName} accessibility statement: our WCAG 2.1 AA commitments, ongoing improvements, and how to report barriers on our ${business.address.city}, ${business.address.region} auto service website.`,
+      },
+      {
+        name: "keywords",
+        content: `${business.legalName} accessibility, WCAG 2.1 AA, auto repair accessible website, ${business.address.city} accessibility statement`,
       },
       { name: "robots", content: "index,follow" },
+      { property: "og:title", content: `Accessibility Statement — ${business.legalName}` },
+      { property: "og:description", content: `${business.legalName} accessibility commitments and how to report barriers.` },
+      { property: "og:type", content: "article" },
+      { property: "og:url", content: CANONICAL },
     ],
+    links: [{ rel: "canonical", href: CANONICAL }],
   }),
   component: AccessibilityPage,
 });
