@@ -18,7 +18,7 @@ export const business = {
   // --- Contact ---
   phoneDisplay: "(XXX) XXX-XXXX",
   phoneHref: "tel:+10000000000",
-  email: "hello@egevansauto.com",
+  email: "info@eevansautocare.com",
 
   // --- Location ---
   address: {

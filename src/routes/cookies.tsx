@@ -2,16 +2,27 @@ import { createFileRoute } from "@tanstack/react-router";
 import { LegalLayout, LegalSection } from "@/components/site/LegalLayout";
 import { business } from "@/config/business";
 
+const CANONICAL = `${business.siteUrl}/cookies`;
+
 export const Route = createFileRoute("/cookies")({
   head: () => ({
     meta: [
-      { title: `Cookie Policy — ${business.legalName}` },
+      { title: `Cookie Policy — ${business.legalName} | ${business.address.city}, ${business.address.region}` },
       {
         name: "description",
-        content: `Cookie policy for ${business.legalName}.`,
+        content: `How ${business.legalName} uses cookies and similar technologies on our ${business.address.city}, ${business.address.region} auto service website, and how you can manage them.`,
+      },
+      {
+        name: "keywords",
+        content: `${business.legalName} cookie policy, auto repair website cookies, ${business.address.city} auto shop cookies, tracking preferences`,
       },
       { name: "robots", content: "index,follow" },
+      { property: "og:title", content: `Cookie Policy — ${business.legalName}` },
+      { property: "og:description", content: `How we use cookies on the ${business.legalName} website.` },
+      { property: "og:type", content: "article" },
+      { property: "og:url", content: CANONICAL },
     ],
+    links: [{ rel: "canonical", href: CANONICAL }],
   }),
   component: CookiesPage,
 });
