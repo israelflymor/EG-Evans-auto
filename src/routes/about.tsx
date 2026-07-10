@@ -10,10 +10,10 @@ export const Route = createFileRoute("/about")({
       { title: `About — ${business.legalName}` },
       {
         name: "description",
-        content: `${business.legalName} is an independent, woman-owned auto repair shop in ${business.address.city}, ${business.address.region}, founded by ${business.owner}.`,
+        content: `${business.legalName} is an auto parts supplier in ${business.address.city}, ${business.address.region}. OEM and aftermarket parts, fitment verification, and fast local pickup.`,
       },
       { property: "og:title", content: `About — ${business.legalName}` },
-      { property: "og:description", content: `Woman-owned auto repair shop in ${business.address.city}, ${business.address.region}.` },
+      { property: "og:description", content: `Auto parts supplier in ${business.address.city}, ${business.address.region}.` },
       { property: "og:url", content: `${business.siteUrl}/about` },
       { property: "og:image", content: aboutImg },
     ],
@@ -36,13 +36,13 @@ function AboutPage() {
               </span>
             </div>
             <h1 className="font-display text-5xl md:text-7xl tracking-tighter mb-8 text-balance leading-[0.95]">
-              An <span className="italic text-gradient-sunset">honest shop</span> in {business.address.city}.
+              Precision parts, <span className="italic text-gradient-sunset">local speed</span>.
             </h1>
             <p className="text-brand-white/70 text-lg leading-relaxed mb-6">
-              {business.legalName} was founded by {business.owner} and operates from {business.address.street} in {business.address.city}, {business.address.region}. An independent shop focused on doing the right work, charging a fair price, and explaining things in plain English.
+              {business.legalName} operates from {business.address.street} in {business.address.city}, {business.address.region}. We source OEM and aftermarket parts, verify fitment, and help everyone from DIYers to fleet managers get the right components fast.
             </p>
             <p className="text-brand-white/70 text-lg leading-relaxed">
-              We serve drivers across {business.serviceArea.secondary} — daily commuters, weekend trucks, exotics in for service, and everything in between.
+              We serve {business.serviceArea.secondary} with a focus on accuracy, fair pricing, and getting you back on the road.
             </p>
           </div>
           <div className="relative">
@@ -58,12 +58,12 @@ function AboutPage() {
         </div>
       </section>
 
-      <section className="py-28 px-6 bg-brand-white">
+      <section className="py-28 px-6 bg-brand-paper">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-px bg-brand-midnight/10">
           {[
-            { h: "Honest", b: "Straightforward quotes. No upsell games. We tell you what's actually needed." },
-            { h: "Careful", b: "Methodical diagnostics before parts replacement — we find the real problem first." },
-            { h: "Local", b: `Independent, woman-owned, and rooted in the ${business.address.city} community.` },
+            { h: "Accurate", b: "We cross-reference OEM numbers and verify fitment before you buy — no guesswork parts swaps." },
+            { h: "Fast", b: "Local stock when possible, nationwide sourcing when needed. Straightforward pickup and delivery options." },
+            { h: "Local", b: `Rooted in ${business.address.city} and serving ${business.serviceArea.secondary} with personal service.` },
           ].map((v, i) => (
             <div key={v.h} className="group p-12 bg-brand-white hover:bg-brand-midnight transition-colors duration-300 relative">
               <p className="font-mono text-[10px] text-brand-sunset tracking-[0.25em] mb-8">
@@ -81,18 +81,17 @@ function AboutPage() {
 
       <Testimonials variant="light" />
 
-
       <section className="py-28 px-6 bg-brand-midnight border-t border-white/10">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="font-display text-4xl md:text-5xl text-brand-white mb-8 text-balance">
-            Ready to bring it in?
+            Need a part?
           </h2>
           <Link
             to="/contact"
-            className="inline-block gradient-sunset text-brand-midnight font-display px-12 py-5 hover:brightness-110 transition text-base"
+            className="inline-block gradient-sunset text-brand-white font-display px-12 py-5 hover:brightness-110 transition text-base"
             style={{ boxShadow: "var(--shadow-sunset)" }}
           >
-            Book Service
+            Request a Quote
           </Link>
         </div>
       </section>

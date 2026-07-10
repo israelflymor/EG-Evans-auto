@@ -4,13 +4,13 @@ import { business, projects } from "@/config/business";
 export const Route = createFileRoute("/projects")({
   head: () => ({
     meta: [
-      { title: `Work — ${business.legalName}` },
+      { title: `Recent Orders — ${business.legalName}` },
       {
         name: "description",
-        content: `A look at recent repair, diagnostics, and maintenance work performed at ${business.legalName} in ${business.address.city}, ${business.address.region}.`,
+        content: `Recent parts orders and fitment work from ${business.legalName} in ${business.address.city}, ${business.address.region}. Brakes, suspension, engine, electrical, and more.`,
       },
-      { property: "og:title", content: `Work — ${business.legalName}` },
-      { property: "og:description", content: "Recent auto repair and diagnostic case studies." },
+      { property: "og:title", content: `Recent Orders — ${business.legalName}` },
+      { property: "og:description", content: "Recent parts sourcing and fitment case studies." },
       { property: "og:url", content: `${business.siteUrl}/projects` },
       { property: "og:image", content: projects[0].img },
     ],
@@ -28,19 +28,19 @@ function ProjectsPage() {
           <div className="inline-flex items-center gap-3 mb-6">
             <span className="h-px w-10 gradient-sunset" />
             <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-brand-sunset">
-              Case Studies
+              Recent Orders
             </span>
           </div>
           <h1 className="font-display text-5xl md:text-7xl lg:text-8xl tracking-tighter mb-8 text-balance leading-[0.95]">
-            What's been <span className="italic text-gradient-sunset">in the bay</span>.
+            Parts that <span className="italic text-gradient-sunset">keep moving</span>.
           </h1>
           <p className="text-brand-white/70 max-w-2xl text-lg leading-relaxed">
-            A small selection of recent jobs from the shop floor.
+            A small selection of recent sourcing and fitment work from the warehouse.
           </p>
         </div>
       </section>
 
-      <section className="py-28 px-6 bg-brand-white">
+      <section className="py-28 px-6 bg-brand-paper">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {projects.map((p) => (
             <article key={p.title} className="group">
@@ -67,14 +67,14 @@ function ProjectsPage() {
       <section className="py-28 px-6 bg-brand-midnight border-t border-white/10">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="font-display text-4xl md:text-5xl text-brand-white mb-8 text-balance">
-            Bring us yours.
+            Tell us what you need
           </h2>
           <Link
             to="/contact"
-            className="inline-block gradient-sunset text-brand-midnight font-display px-12 py-5 hover:brightness-110 transition text-base"
+            className="inline-block gradient-sunset text-brand-white font-display px-12 py-5 hover:brightness-110 transition text-base"
             style={{ boxShadow: "var(--shadow-sunset)" }}
           >
-            Book Service
+            Request a Quote
           </Link>
         </div>
       </section>
