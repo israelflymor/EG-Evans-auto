@@ -1,17 +1,17 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import heroImg from "@/assets/hero.jpg";
 import aboutImg from "@/assets/about-team.jpg";
-import { business, services, projects } from "@/config/business";
+import { business, categories, projects } from "@/config/business";
 import { PartFinder } from "@/components/site/PartFinder";
 import { Testimonials } from "@/components/site/Testimonials";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: `${business.legalName} — Coastal Luxury Auto Care · ${business.address.city}, ${business.address.region}` },
+      { title: `${business.legalName} — Auto Parts · ${business.address.city}, ${business.address.region}` },
       {
         name: "description",
-        content: `Concierge-grade auto repair and diagnostics in ${business.address.city}, ${business.address.region}. Find parts and book service for any year/make/model.`,
+        content: `OEM and aftermarket auto parts in ${business.address.city}, ${business.address.region}. Search by year, make, and model and request a quote for brakes, suspension, engine, electrical, and more.`,
       },
       { property: "og:title", content: `${business.legalName} — ${business.tagline}` },
       { property: "og:description", content: business.hero.sub },
@@ -31,7 +31,7 @@ function HomePage() {
       <header className="relative min-h-[100vh] w-full flex flex-col justify-end bg-brand-midnight overflow-hidden">
         <img
           src={heroImg}
-          alt={`Luxury black sports car on a Miami coastal boulevard at sunset — visual mood for ${business.legalName}`}
+          alt={`Organized auto parts warehouse shelves — visual mood for ${business.legalName}`}
           width={1920}
           height={1280}
           className="absolute inset-0 w-full h-full object-cover opacity-70"
@@ -80,35 +80,35 @@ function HomePage() {
         </div>
       </div>
 
-      {/* SERVICES */}
-      <section className="py-28 px-6 bg-brand-white">
+      {/* CATEGORIES */}
+      <section className="py-28 px-6 bg-brand-paper">
         <div className="max-w-7xl mx-auto">
           <div className="mb-20 max-w-3xl">
             <div className="inline-flex items-center gap-3 mb-6">
               <span className="h-px w-10 bg-brand-sunset" />
               <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-brand-midnight/60">
-                Capabilities
+                Catalog
               </span>
             </div>
             <h2 className="font-display text-4xl md:text-6xl tracking-tight text-brand-midnight text-balance leading-[1.05]">
-              Full-service care. <span className="italic text-brand-midnight/50">No shortcuts.</span>
+              Parts by category. <span className="italic text-brand-midnight/50">Sourced fast.</span>
             </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-brand-midnight/10">
-            {services.slice(0, 6).map((s, i) => (
+            {categories.map((c, i) => (
               <div
-                key={s.title}
+                key={c.slug}
                 className="group relative p-10 bg-brand-white hover:bg-brand-midnight transition-colors duration-300 cursor-default"
               >
                 <p className="font-mono text-[10px] text-brand-sunset tracking-[0.25em] mb-8">
-                  {String(i + 1).padStart(2, "0")} / {String(services.length).padStart(2, "0")}
+                  {String(i + 1).padStart(2, "0")} / {String(categories.length).padStart(2, "0")}
                 </p>
                 <h3 className="font-display text-2xl mb-4 text-brand-midnight group-hover:text-brand-white transition-colors">
-                  {s.title}
+                  {c.title}
                 </h3>
                 <p className="text-sm text-brand-midnight/65 group-hover:text-brand-white/65 leading-relaxed transition-colors">
-                  {s.body}
+                  {c.body}
                 </p>
                 <div className="absolute bottom-0 left-0 h-px w-0 group-hover:w-full gradient-sunset transition-all duration-500" />
               </div>
@@ -124,17 +124,17 @@ function HomePage() {
             <div className="relative">
               <img
                 src={aboutImg}
-                alt={`Luxury auto service bay at ${business.legalName}`}
+                alt={`Auto parts warehouse and team at ${business.legalName}`}
                 width={1280}
                 height={1600}
                 loading="lazy"
                 className="w-full aspect-[4/5] object-cover"
               />
               <div className="absolute -bottom-8 -right-4 md:-right-8 gradient-sunset p-8 md:p-10 max-w-[280px]">
-                <p className="font-display text-4xl text-brand-midnight leading-none">
+                <p className="font-display text-4xl text-brand-white leading-none">
                   Est. {business.established}
                 </p>
-                <p className="font-mono text-[10px] tracking-[0.25em] text-brand-midnight/80 uppercase mt-3">
+                <p className="font-mono text-[10px] tracking-[0.25em] text-brand-white/80 uppercase mt-3">
                   {business.serviceArea.primary}
                 </p>
               </div>
@@ -144,14 +144,14 @@ function HomePage() {
             <div className="inline-flex items-center gap-3 mb-6">
               <span className="h-px w-10 bg-brand-sunset" />
               <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-brand-sunset">
-                The Shop
+                The Warehouse
               </span>
             </div>
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl tracking-tight text-brand-white mb-8 text-balance leading-[1.05]">
-              Owned and run by <span className="italic text-gradient-sunset">{business.owner}</span>.
+              Parts sourced with <span className="italic text-gradient-sunset">precision</span>.
             </h2>
             <p className="text-brand-white/70 text-lg leading-relaxed max-w-[56ch] mb-10 text-pretty">
-              An independent, woman-owned shop on Waterloo Drive. The kind of care you'd want for your own family's vehicle — careful, transparent, and explained in plain English.
+              A locally operated parts desk in Punta Gorda. We cross-reference OEM and aftermarket options, verify fitment, and get you back to work — whether you're fixing one vehicle or running a fleet.
             </p>
             <div className="grid grid-cols-2 gap-8 border-t border-white/10 pt-10">
               <Stat label="Service Area" value={business.serviceArea.primary} />
@@ -171,18 +171,18 @@ function HomePage() {
       </section>
 
       {/* PROJECTS */}
-      <section className="py-28 px-6 bg-brand-white">
+      <section className="py-28 px-6 bg-brand-paper">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
             <div>
               <div className="inline-flex items-center gap-3 mb-6">
                 <span className="h-px w-10 bg-brand-sunset" />
                 <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-brand-midnight/60">
-                  Case Studies
+                  Recent Orders
                 </span>
               </div>
               <h2 className="font-display text-4xl md:text-6xl tracking-tight text-brand-midnight leading-[1.05]">
-                Recent Work
+                Parts in action
               </h2>
             </div>
             <Link
@@ -228,17 +228,17 @@ function HomePage() {
         <div className="absolute inset-0 opacity-30 gradient-sunset blur-[120px]" />
         <div className="relative max-w-4xl mx-auto text-center">
           <h2 className="font-display text-4xl md:text-6xl tracking-tight text-brand-white mb-6 text-balance leading-[1.05]">
-            Your vehicle deserves <span className="italic text-gradient-sunset">the standard</span>.
+            Get the part you need <span className="italic text-gradient-sunset">today</span>.
           </h2>
           <p className="text-brand-white/70 mb-12 max-w-2xl mx-auto text-lg">
-            Tell us what's going on. We'll get back to you with a straightforward next step — no jargon, no upsell.
+            Tell us your year, make, model, and what you're after. We'll check fitment and get back to you with availability and price.
           </p>
           <Link
             to="/contact"
-            className="inline-flex items-center gap-3 gradient-sunset text-brand-midnight font-display px-12 py-5 hover:brightness-110 transition text-base"
+            className="inline-flex items-center gap-3 gradient-sunset text-brand-white font-display px-12 py-5 hover:brightness-110 transition text-base"
             style={{ boxShadow: "var(--shadow-sunset)" }}
           >
-            Book Service
+            Request a Quote
             <svg className="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M5 12h14M13 6l6 6-6 6" />
             </svg>
