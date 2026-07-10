@@ -10,7 +10,6 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TermsRouteImport } from './routes/terms'
-import { Route as ServicesRouteImport } from './routes/services'
 import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as CookiesRouteImport } from './routes/cookies'
@@ -24,11 +23,6 @@ import { Route as CategorySlugRouteImport } from './routes/category.$slug'
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ServicesRoute = ServicesRouteImport.update({
-  id: '/services',
-  path: '/services',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProjectsRoute = ProjectsRouteImport.update({
@@ -86,7 +80,6 @@ export interface FileRoutesByFullPath {
   '/cookies': typeof CookiesRoute
   '/privacy': typeof PrivacyRoute
   '/projects': typeof ProjectsRoute
-  '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
   '/category/$slug': typeof CategorySlugRoute
 }
@@ -99,7 +92,6 @@ export interface FileRoutesByTo {
   '/cookies': typeof CookiesRoute
   '/privacy': typeof PrivacyRoute
   '/projects': typeof ProjectsRoute
-  '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
   '/category/$slug': typeof CategorySlugRoute
 }
@@ -113,7 +105,6 @@ export interface FileRoutesById {
   '/cookies': typeof CookiesRoute
   '/privacy': typeof PrivacyRoute
   '/projects': typeof ProjectsRoute
-  '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
   '/category/$slug': typeof CategorySlugRoute
 }
@@ -128,7 +119,6 @@ export interface FileRouteTypes {
     | '/cookies'
     | '/privacy'
     | '/projects'
-    | '/services'
     | '/terms'
     | '/category/$slug'
   fileRoutesByTo: FileRoutesByTo
@@ -141,7 +131,6 @@ export interface FileRouteTypes {
     | '/cookies'
     | '/privacy'
     | '/projects'
-    | '/services'
     | '/terms'
     | '/category/$slug'
   id:
@@ -154,7 +143,6 @@ export interface FileRouteTypes {
     | '/cookies'
     | '/privacy'
     | '/projects'
-    | '/services'
     | '/terms'
     | '/category/$slug'
   fileRoutesById: FileRoutesById
@@ -168,7 +156,6 @@ export interface RootRouteChildren {
   CookiesRoute: typeof CookiesRoute
   PrivacyRoute: typeof PrivacyRoute
   ProjectsRoute: typeof ProjectsRoute
-  ServicesRoute: typeof ServicesRoute
   TermsRoute: typeof TermsRoute
   CategorySlugRoute: typeof CategorySlugRoute
 }
@@ -180,13 +167,6 @@ declare module '@tanstack/react-router' {
       path: '/terms'
       fullPath: '/terms'
       preLoaderRoute: typeof TermsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/services': {
-      id: '/services'
-      path: '/services'
-      fullPath: '/services'
-      preLoaderRoute: typeof ServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/projects': {
@@ -264,7 +244,6 @@ const rootRouteChildren: RootRouteChildren = {
   CookiesRoute: CookiesRoute,
   PrivacyRoute: PrivacyRoute,
   ProjectsRoute: ProjectsRoute,
-  ServicesRoute: ServicesRoute,
   TermsRoute: TermsRoute,
   CategorySlugRoute: CategorySlugRoute,
 }
