@@ -10,11 +10,11 @@ export const Route = createFileRoute("/cookies")({
       { title: `Cookie Policy — ${business.legalName} | ${business.address.city}, ${business.address.region}` },
       {
         name: "description",
-        content: `How ${business.legalName} uses cookies and similar technologies on our ${business.address.city}, ${business.address.region} auto service website, and how you can manage them.`,
+        content: `How ${business.legalName} uses cookies and similar technologies on our ${business.address.city}, ${business.address.region} auto parts website, and how you can manage them.`,
       },
       {
         name: "keywords",
-        content: `${business.legalName} cookie policy, auto repair website cookies, ${business.address.city} auto shop cookies, tracking preferences`,
+        content: `${business.legalName} cookie policy, auto parts website cookies, ${business.address.city} auto parts cookies, tracking preferences`,
       },
       { name: "robots", content: "index,follow" },
       { property: "og:title", content: `Cookie Policy — ${business.legalName}` },

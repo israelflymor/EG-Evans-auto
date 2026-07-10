@@ -12,7 +12,7 @@ export function SiteFooter() {
           <Link to="/" className="flex items-center gap-3 mb-6">
             <div className="relative size-10 flex items-center justify-center">
               <div className="absolute inset-0 gradient-sunset" />
-              <span className="relative text-brand-midnight font-display text-lg leading-none">
+              <span className="relative text-brand-white font-display text-lg leading-none">
                 {business.initials}
               </span>
             </div>
@@ -21,7 +21,7 @@ export function SiteFooter() {
             </span>
           </Link>
           <p className="text-brand-white/55 text-sm leading-relaxed max-w-md">
-            {business.tagline} Concierge-grade auto care for {business.serviceArea.secondary}.
+            {business.tagline} OEM and aftermarket parts for {business.serviceArea.secondary}.
           </p>
         </div>
 
@@ -56,10 +56,10 @@ export function SiteFooter() {
             Sitemap
           </h4>
           <ul className="space-y-3 text-sm">
-            <li><Link to="/services" className="text-brand-white/65 hover:text-brand-sunset transition">Services</Link></li>
-            <li><Link to="/projects" className="text-brand-white/65 hover:text-brand-sunset transition">Work</Link></li>
+            <li><Link to="/categories" className="text-brand-white/65 hover:text-brand-sunset transition">Catalog</Link></li>
+            <li><Link to="/projects" className="text-brand-white/65 hover:text-brand-sunset transition">Orders</Link></li>
             <li><Link to="/about" className="text-brand-white/65 hover:text-brand-sunset transition">About</Link></li>
-            <li><Link to="/contact" className="text-brand-white/65 hover:text-brand-sunset transition">Book Service</Link></li>
+            <li><Link to="/contact" className="text-brand-white/65 hover:text-brand-sunset transition">Request a Quote</Link></li>
           </ul>
         </div>
 

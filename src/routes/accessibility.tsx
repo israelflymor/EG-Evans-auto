@@ -10,11 +10,11 @@ export const Route = createFileRoute("/accessibility")({
       { title: `Accessibility Statement — ${business.legalName} | ${business.address.city}, ${business.address.region}` },
       {
         name: "description",
-        content: `${business.legalName} accessibility statement: our WCAG 2.1 AA commitments, ongoing improvements, and how to report barriers on our ${business.address.city}, ${business.address.region} auto service website.`,
+        content: `${business.legalName} accessibility statement: our WCAG 2.1 AA commitments, ongoing improvements, and how to report barriers on our ${business.address.city}, ${business.address.region} auto parts website.`,
       },
       {
         name: "keywords",
-        content: `${business.legalName} accessibility, WCAG 2.1 AA, auto repair accessible website, ${business.address.city} accessibility statement`,
+        content: `${business.legalName} accessibility, WCAG 2.1 AA, auto parts accessible website, ${business.address.city} accessibility statement`,
       },
       { name: "robots", content: "index,follow" },
       { property: "og:title", content: `Accessibility Statement — ${business.legalName}` },

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://egevansauto.lovable.app/sitemap.xml
+Sitemap: https://crotteauautoparts.lovable.app/sitemap.xml
