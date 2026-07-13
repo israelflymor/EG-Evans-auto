@@ -61,6 +61,10 @@ export const business = {
   ],
 } as const;
 
+// True once a real phone number is set on `business.phoneDisplay`.
+// Placeholder ("(XXX) XXX-XXXX") hides the phone block in header/footer/contact.
+export const hasPhone = !business.phoneDisplay.includes("X");
+
 // --- Part catalog categories ---
 export const categories = [
   {
