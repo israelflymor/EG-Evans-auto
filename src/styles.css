@@ -36,8 +36,12 @@
   --color-brand-mist: var(--brand-mist);
   --color-brand-white: var(--brand-white);
   --color-brand-paper: var(--brand-paper);
+  --color-brand-fog: var(--brand-fog);
+  --color-brand-hairline: var(--brand-hairline);
   --color-brand-sunset: var(--brand-sunset);
   --color-brand-sunset-deep: var(--brand-sunset-deep);
+
+  --ease-luxe: cubic-bezier(0.22, 1, 0.36, 1);
 
   --font-display: 'Space Grotesk', sans-serif;
   --font-body: 'Inter', sans-serif;
