@@ -11,7 +11,7 @@ import {
 import appCss from "../styles.css?url";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
-import { business, testimonials } from "@/config/business";
+import { business, hasPhone, testimonials } from "@/config/business";
 
 function NotFoundComponent() {
   return (
