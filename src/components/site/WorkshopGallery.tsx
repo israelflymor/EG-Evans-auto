@@ -15,15 +15,15 @@ export function WorkshopGallery() {
             <div className="inline-flex items-center gap-3">
               <span className="h-px w-10 gradient-sunset" />
               <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-brand-sunset">
-                Workshop Excellence
+                Inside the Warehouse
               </span>
             </div>
             <h2 className="font-display text-4xl md:text-6xl tracking-tighter leading-none text-balance">
-              Inside the <span className="italic text-gradient-sunset">Laboratory</span>
+              Fitment-first <span className="italic text-gradient-sunset">operations</span>
             </h2>
           </div>
           <p className="max-w-sm text-brand-white/60 text-sm leading-relaxed border-l border-brand-white/10 pl-6">
-            Our facility pairs heritage craftsmanship with modern diagnostic technology. We use precision instrumentation to maintain your vehicle to the highest standard.
+            Cross-reference desk, organized local stock, and a QC bench for fitment verification. Every part is matched to your vehicle before it leaves the counter.
           </p>
         </div>
 
@@ -106,7 +106,7 @@ export function WorkshopGallery() {
             to="/contact"
             className="group flex items-center gap-4 text-xs font-display tracking-[0.3em] uppercase text-brand-white hover:text-brand-sunset transition-colors"
           >
-            Book Service
+            Request a Quote
             <svg
               className="w-5 h-5 group-hover:translate-x-1 transition-transform"
               fill="none"

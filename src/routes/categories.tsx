@@ -49,7 +49,7 @@ function CategoriesPage() {
               key={c.slug}
               to="/category/$slug"
               params={{ slug: c.slug }}
-              className="group block p-10 bg-brand-white hover:bg-brand-midnight transition-colors duration-300"
+              className="group relative block p-10 bg-brand-white hover:bg-brand-midnight transition-colors duration-300"
             >
               <p className="font-mono text-[10px] text-brand-sunset tracking-[0.25em] mb-8">
                 {String(i + 1).padStart(2, "0")} / {String(categories.length).padStart(2, "0")}
