@@ -99,7 +99,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@context": "https://schema.org",
           "@type": "AutoPartsStore",
           name: business.legalName,
-          telephone: business.phoneDisplay,
+          ...(hasPhone ? { telephone: business.phoneDisplay } : {}),
           email: business.email,
           address: {
             "@type": "PostalAddress",
