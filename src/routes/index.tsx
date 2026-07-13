@@ -23,6 +23,7 @@ export const Route = createFileRoute("/")({
       { rel: "canonical", href: business.siteUrl },
       { rel: "preload", as: "image", href: heroImg, fetchpriority: "high" },
     ],
+  }),
   component: HomePage,
 });
 
