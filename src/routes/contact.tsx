@@ -68,15 +68,6 @@ function ContactPage() {
                   {business.email}
                 </a>
               </InfoBlock>
-              <InfoBlock label="Email">
-                <a
-                  href={`mailto:${business.email}`}
-                  onClick={() => trackContactClick("email", business.email)}
-                  className="text-sm text-brand-midnight hover:text-brand-sunset-deep transition"
-                >
-                  {business.email}
-                </a>
-              </InfoBlock>
               <InfoBlock label="Hours">
                 <ul className="space-y-1.5 text-sm text-brand-midnight">
                   {business.hours.map((h) => (
