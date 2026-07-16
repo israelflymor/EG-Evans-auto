@@ -40,8 +40,10 @@ export const business = {
   ],
 
   // --- Web / SEO ---
-  domain: "egevansauto.lovable.app",
-  siteUrl: "https://egevansauto.lovable.app",
+  domain: "eevansautocare.com",
+  siteUrl: "https://eevansautocare.com",
+  // Paste the token value from Google Search Console (Settings → Ownership verification → HTML tag)
+  googleSiteVerification: "",
 
   // --- Brand voice ---
   hero: {
