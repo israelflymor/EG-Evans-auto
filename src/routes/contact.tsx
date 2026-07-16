@@ -59,13 +59,13 @@ function ContactPage() {
                   {business.address.city}, {business.address.region} {business.address.postalCode}
                 </address>
               </InfoBlock>
-              <InfoBlock label="Phone">
+              <InfoBlock label="Email">
                 <a
-                  href={business.phoneHref}
-                  onClick={() => trackContactClick("phone", business.phoneDisplay)}
+                  href={`mailto:${business.email}`}
+                  onClick={() => trackContactClick("email", business.email)}
                   className="text-sm text-brand-midnight hover:text-brand-sunset-deep transition"
                 >
-                  {business.phoneDisplay}
+                  {business.email}
                 </a>
               </InfoBlock>
               <InfoBlock label="Email">

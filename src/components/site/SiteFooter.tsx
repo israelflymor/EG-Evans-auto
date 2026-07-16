@@ -34,17 +34,9 @@ export function SiteFooter() {
             {business.address.city}, {business.address.region} {business.address.postalCode}
           </address>
           <a
-            href={business.phoneHref}
-            onClick={() => trackContactClick("phone", business.phoneDisplay)}
-            className="block text-brand-white hover:text-brand-sunset text-sm transition"
-          >
-            <span className="block text-brand-white/40 text-[10px] uppercase tracking-[0.25em] mb-1 font-mono">Phone</span>
-            {business.phoneDisplay}
-          </a>
-          <a
             href={`mailto:${business.email}`}
             onClick={() => trackContactClick("email", business.email)}
-            className="block mt-3 text-brand-white hover:text-brand-sunset text-sm transition"
+            className="block text-brand-white hover:text-brand-sunset text-sm transition"
           >
             <span className="block text-brand-white/40 text-[10px] uppercase tracking-[0.25em] mb-1 font-mono">Email</span>
             {business.email}
