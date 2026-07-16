@@ -10,15 +10,15 @@ export const Route = createFileRoute("/terms")({
       { title: `SMS Terms of Service — ${business.legalName} | ${business.address.city}, ${business.address.region}` },
       {
         name: "description",
-        content: `SMS Terms of Service for ${business.legalName}: consent, opt-out (STOP), HELP instructions, carrier disclaimers, and messaging rates for our ${business.address.city}, ${business.address.region} auto parts texts.`,
+        content: `SMS Terms of Service for ${business.legalName}: consent, opt-out (STOP), HELP instructions, carrier disclaimers, and messaging rates for our ${business.address.city}, ${business.address.region} auto service texts.`,
       },
       {
         name: "keywords",
-        content: `${business.legalName} terms, SMS terms of service, auto parts terms, ${business.address.city} auto parts terms, message and data rates, STOP opt out`,
+        content: `${business.legalName} terms, SMS terms of service, auto repair terms, ${business.address.city} auto shop terms, message and data rates, STOP opt out`,
       },
       { name: "robots", content: "index,follow" },
       { property: "og:title", content: `SMS Terms of Service — ${business.legalName}` },
-      { property: "og:description", content: `Terms governing SMS communications and parts inquiries with ${business.legalName}.` },
+      { property: "og:description", content: `Terms governing SMS communications and service inquiries with ${business.legalName}.` },
       { property: "og:type", content: "article" },
       { property: "og:url", content: CANONICAL },
     ],
@@ -38,9 +38,9 @@ function TermsPage() {
     >
       <p>
         {business.legalName} provides alerts and updates to subscribers regarding
-        parts inquiries, order updates, quote requests, parts
+        auto service inquiries, appointment updates, quote requests, parts
         availability, pickup notifications, customer support communications,
-        promotional offers, and related automotive parts services.
+        promotional offers, and related automotive services.
       </p>
 
       <LegalSection heading="1. SMS Consent">
@@ -102,7 +102,7 @@ function TermsPage() {
         </p>
         <p>
           Message frequency varies depending on your interaction with our
-          services, quote requests, order status updates, customer support
+          services, quote requests, appointment status updates, customer support
           communications, and promotional preferences.
         </p>
         <p>

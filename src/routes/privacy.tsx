@@ -10,11 +10,11 @@ export const Route = createFileRoute("/privacy")({
       { title: `Privacy Policy — ${business.legalName} | ${business.address.city}, ${business.address.region}` },
       {
         name: "description",
-        content: `How ${business.legalName} collects, uses, and protects customer information across our website, quote requests, parts orders, and SMS communications in ${business.address.city}, ${business.address.region}.`,
+        content: `How ${business.legalName} collects, uses, and protects customer information across our website, quote requests, service records, and SMS communications in ${business.address.city}, ${business.address.region}.`,
       },
       {
         name: "keywords",
-        content: `${business.legalName} privacy policy, auto parts privacy, ${business.address.city} auto parts privacy, SMS consent, customer data protection`,
+        content: `${business.legalName} privacy policy, auto repair privacy, ${business.address.city} auto shop privacy, SMS consent, customer data protection`,
       },
       { name: "robots", content: "index,follow" },
       { property: "og:title", content: `Privacy Policy — ${business.legalName}` },
@@ -44,7 +44,7 @@ function PrivacyPage() {
       <p>
         This Privacy Policy explains how we collect, use, disclose, and safeguard
         your information when you visit {site}, submit inquiries, request
-        quotes, place parts orders, or communicate with us through email, phone, or
+        quotes, receive service, or communicate with us through email, phone, or
         SMS messaging services.
       </p>
 
@@ -56,8 +56,8 @@ function PrivacyPage() {
           <li>Phone number</li>
           <li>Company name (if applicable)</li>
           <li>Vehicle information (year, make, model, VIN)</li>
-          <li>Parts inquiry and order details</li>
-          <li>Billing and pickup/delivery information</li>
+          <li>Service and repair inquiry details</li>
+          <li>Billing and pickup/drop-off information</li>
           <li>Communication preferences</li>
         </ul>
         <p>We may also automatically collect certain technical information including:</p>
@@ -74,9 +74,9 @@ function PrivacyPage() {
         <p>We may use your information to:</p>
         <ul className="list-disc pl-6 space-y-1">
           <li>Respond to inquiries and quote requests</li>
-          <li>Process parts orders and source components</li>
+          <li>Schedule appointments and process service orders</li>
           <li>Provide customer support</li>
-          <li>Send order confirmations and status updates</li>
+          <li>Send appointment confirmations and status updates</li>
           <li>Notify you regarding parts availability</li>
           <li>Send requested communications</li>
           <li>Improve our website and services</li>
@@ -91,10 +91,10 @@ function PrivacyPage() {
           {business.legalName} regarding:
         </p>
         <ul className="list-disc pl-6 space-y-1">
-          <li>Parts and fitment inquiries</li>
+          <li>Service and parts inquiries</li>
           <li>Quote requests</li>
-          <li>Order status updates</li>
-          <li>Pickup and delivery notifications</li>
+          <li>Appointment and repair status updates</li>
+          <li>Vehicle pickup notifications</li>
           <li>Customer service communications</li>
           <li>Promotional offers (when applicable)</li>
         </ul>

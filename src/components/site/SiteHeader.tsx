@@ -22,8 +22,8 @@ export function SiteHeader() {
   }, []);
 
   const navLinks = [
-    { to: "/categories", label: "Catalog" },
-    { to: "/projects", label: "Orders" },
+    { to: "/services", label: "Services" },
+    { to: "/projects", label: "Work" },
     { to: "/about", label: "About" },
   ] as const;
 
@@ -39,7 +39,7 @@ export function SiteHeader() {
         <Link to="/" className="flex items-center gap-3 group">
           <div className="relative size-10 flex items-center justify-center">
             <div className="absolute inset-0 gradient-sunset" />
-            <span className="relative text-brand-white font-display text-lg leading-none">
+            <span className="relative text-brand-midnight font-display text-lg leading-none">
               {business.initials}
             </span>
           </div>
@@ -66,10 +66,10 @@ export function SiteHeader() {
           ))}
           <Link
             to="/contact"
-            onClick={() => trackEvent("cta_click", { source: "header", label: "Request a Quote" })}
-            className="gradient-sunset text-brand-white font-display text-sm px-6 py-3 hover:brightness-110 transition"
+            onClick={() => trackEvent("cta_click", { source: "header", label: "Book Service" })}
+            className="gradient-sunset text-brand-midnight font-display text-sm px-6 py-3 hover:brightness-110 transition"
           >
-            Request a Quote
+            Book Service
           </Link>
         </div>
 
@@ -104,9 +104,9 @@ export function SiteHeader() {
           <Link
             to="/contact"
             onClick={() => setOpen(false)}
-            className="gradient-sunset text-brand-white font-display text-base px-6 py-4 text-center"
+            className="gradient-sunset text-brand-midnight font-display text-base px-6 py-4 text-center"
           >
-            Request a Quote
+            Book Service
           </Link>
         </div>
       )}

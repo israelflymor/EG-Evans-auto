@@ -3,16 +3,21 @@ import { QuoteForm } from "@/components/site/QuoteForm";
 import { business } from "@/config/business";
 import { trackContactClick } from "@/lib/analytics";
 
+type ContactSearch = { vehicle?: string };
+
 export const Route = createFileRoute("/contact")({
+  validateSearch: (s: Record<string, unknown>): ContactSearch => ({
+    vehicle: typeof s.vehicle === "string" ? s.vehicle : undefined,
+  }),
   head: () => ({
     meta: [
-      { title: `Request a Quote — ${business.legalName}` },
+      { title: `Book Service — ${business.legalName}` },
       {
         name: "description",
-        content: `Request a parts quote from ${business.legalName} in ${business.address.city}, ${business.address.region}. Tell us your year, make, model, and what you need and we'll check fitment and pricing.`,
+        content: `Request service or a quote from ${business.legalName} in ${business.address.city}, ${business.address.region}. Tell us about your vehicle and we'll get back to you.`,
       },
-      { property: "og:title", content: `Request a Quote — ${business.legalName}` },
-      { property: "og:description", content: `Parts quote requests for drivers and fleets in ${business.serviceArea.secondary}.` },
+      { property: "og:title", content: `Book Service — ${business.legalName}` },
+      { property: "og:description", content: `Auto repair requests for drivers in ${business.serviceArea.secondary}.` },
       { property: "og:url", content: `${business.siteUrl}/contact` },
     ],
     links: [{ rel: "canonical", href: `${business.siteUrl}/contact` }],
@@ -21,6 +26,8 @@ export const Route = createFileRoute("/contact")({
 });
 
 function ContactPage() {
+  const { vehicle } = Route.useSearch();
+
   return (
     <>
       <section className="bg-brand-midnight text-brand-white pt-40 pb-20 px-6 relative overflow-hidden">
@@ -33,16 +40,16 @@ function ContactPage() {
             </span>
           </div>
           <h1 className="font-display text-5xl md:text-7xl tracking-tighter mb-6 text-balance leading-[0.95]">
-            Let's find your <span className="italic text-gradient-sunset">part</span>.
+            Let's get your <span className="italic text-gradient-sunset">car looked at</span>.
           </h1>
         </div>
       </section>
 
-      <section className="py-24 px-6 bg-brand-paper">
+      <section className="py-24 px-6 bg-brand-white">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16">
           <div className="w-full lg:w-1/3">
             <p className="text-brand-midnight/65 mb-10 leading-relaxed">
-              Tell us your year, make, model, and what you're looking for. The more detail you give (part number, symptoms, brand preference), the faster we can check fitment and pricing.
+              Tell us about your vehicle and what's going on. The more detail you give (year, make, model, symptoms), the faster we can give you a useful answer.
             </p>
 
             <div className="space-y-8 pt-8 border-t border-brand-midnight/10">
@@ -87,7 +94,7 @@ function ContactPage() {
           </div>
 
           <div className="w-full lg:w-2/3">
-            <QuoteForm />
+            <QuoteForm defaultVehicle={vehicle ?? ""} />
           </div>
         </div>
       </section>
