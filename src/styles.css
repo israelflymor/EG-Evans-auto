@@ -36,12 +36,8 @@
   --color-brand-mist: var(--brand-mist);
   --color-brand-white: var(--brand-white);
   --color-brand-paper: var(--brand-paper);
-  --color-brand-fog: var(--brand-fog);
-  --color-brand-hairline: var(--brand-hairline);
   --color-brand-sunset: var(--brand-sunset);
   --color-brand-sunset-deep: var(--brand-sunset-deep);
-
-  --ease-luxe: cubic-bezier(0.22, 1, 0.36, 1);
 
   --font-display: 'Space Grotesk', sans-serif;
   --font-body: 'Inter', sans-serif;
@@ -65,8 +61,6 @@
   --brand-paper: oklch(0.955 0.003 260);     /* #F3F4F6 page paper */
   --brand-sunset: oklch(0.68 0.18 55);       /* #F97316 safety orange */
   --brand-sunset-deep: oklch(0.58 0.19 45);  /* #EA580C deep orange */
-  --brand-fog: oklch(0.975 0.002 260);        /* whisper card surface */
-  --brand-hairline: oklch(0.85 0.005 260 / 0.6); /* 1px premium border */
 
   --background: var(--brand-paper);
   --foreground: var(--brand-midnight);
@@ -141,30 +135,4 @@
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-}
-
-@utility hairline {
-  border: 1px solid var(--brand-hairline);
-}
-
-@utility kicker {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-}
-
-@utility bento-tile {
-  position: relative;
-  overflow: hidden;
-  background-color: var(--brand-white);
-  border: 1px solid var(--brand-hairline);
-  transition: transform 240ms var(--ease-luxe), border-color 240ms var(--ease-luxe);
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .bento-tile:hover {
-    transform: translateY(-2px);
-    border-color: color-mix(in oklab, var(--brand-sunset) 60%, transparent);
-  }
 }

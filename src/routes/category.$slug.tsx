@@ -26,42 +26,6 @@ export const Route = createFileRoute("/category/$slug")({
         { property: "og:type", content: "website" },
       ],
       links: [{ rel: "canonical", href: `${business.siteUrl}/category/${params.slug as CategorySlug}` }],
-      scripts: category
-        ? [
-            {
-              type: "application/ld+json",
-              children: JSON.stringify({
-                "@context": "https://schema.org",
-                "@type": "BreadcrumbList",
-                itemListElement: [
-                  { "@type": "ListItem", position: 1, name: "Home", item: business.siteUrl },
-                  { "@type": "ListItem", position: 2, name: "Catalog", item: `${business.siteUrl}/categories` },
-                  {
-                    "@type": "ListItem",
-                    position: 3,
-                    name: category.title,
-                    item: `${business.siteUrl}/category/${category.slug}`,
-                  },
-                ],
-              }),
-            },
-            {
-              type: "application/ld+json",
-              children: JSON.stringify({
-                "@context": "https://schema.org",
-                "@type": "OfferCatalog",
-                name: `${category.title} — ${business.shortName}`,
-                url: `${business.siteUrl}/category/${category.slug}`,
-                description: category.body,
-                provider: {
-                  "@type": "AutoPartsStore",
-                  name: business.legalName,
-                  url: business.siteUrl,
-                },
-              }),
-            },
-          ]
-        : [],
     };
   },
   notFoundComponent: CategoryNotFound,
