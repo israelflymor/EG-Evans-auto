@@ -9,7 +9,9 @@
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
     "lint": "eslint .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "assemble-spa": "node scripts/assemble-spa.js",
+    "build:spa": "npm run build && npm run assemble-spa"
   },
   "dependencies": {
     "@cloudflare/vite-plugin": "^1.25.5",
