@@ -49,7 +49,7 @@ function HomePage() {
               </span>
             </div>
             <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-brand-white leading-[0.95] tracking-tighter text-balance mb-8">
-              {business.hero.headlineLineOne}<br />
+              <span>{business.hero.headlineLineOne}</span><br />
               <span className="italic text-gradient-sunset">{business.hero.headlineLineTwo}</span>
             </h1>
             <p className="text-brand-white/75 text-lg max-w-xl mb-10 leading-relaxed">
