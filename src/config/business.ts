@@ -7,9 +7,9 @@
 
 export const business = {
   // --- Identity ---
-  legalName: "EG Evans Auto Services LLC",
-  shortName: "EG Evans Auto",
-  initials: "EG",
+  legalName: "E EVANS AUTO SERVICES LLC",
+  shortName: "E Evans Auto",
+  initials: "EE",
   tagline: "Coastal Luxury. Precision Service.",
   owner: "Elizabeth Evans",
   ownerTitle: "Founder & Lead Technician",
@@ -48,9 +48,9 @@ export const business = {
   // --- Brand voice ---
   hero: {
     eyebrow: "Dahlonega · North Georgia",
-    headlineLineOne: "Precision Auto Care,",
+    headlineLineOne: "Elizabeth\u00a0 Evans",
     headlineLineTwo: "Coastal-Luxury Standard.",
-    sub: "From daily drivers to weekend exotics — EG Evans Auto Services delivers concierge-grade diagnostics, repair, and maintenance with the polish you'd expect from Miami's finest service houses.",
+    sub: "From daily drivers to weekend exotics — E. Evans Auto Services delivers concierge-grade diagnostics, repair, and maintenance with the polish you'd expect from Miami's finest service houses.",
     primaryCta: { label: "Book Service", to: "/contact" as const },
     secondaryCta: { label: "Browse Services", to: "/services" as const },
   },
@@ -110,7 +110,7 @@ export const testimonials = [
     vehicle: "2021 Toyota RAV4",
     rating: 5,
     quote:
-      "Chased a check-engine light at two other shops before EG Evans diagnosed it in an hour. Felt like the only customer in the place.",
+      "Chased a check-engine light at two other shops before E Evans diagnosed it in an hour. Felt like the only customer in the place.",
     date: "2025-11-02",
   },
   {

@@ -72,7 +72,7 @@ export function SiteFooter() {
 
       <div className="max-w-7xl mx-auto pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
         <p className="text-brand-white/40 text-[11px] tracking-widest uppercase font-mono">
-          &copy; {new Date().getFullYear()} {business.legalName}
+          &copy; {new Date().getFullYear()} E.EVANS AUTO SERVICES LLC
         </p>
         <ul className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-[11px] tracking-widest uppercase font-mono">
           <li><Link to="/privacy" className="text-brand-white/40 hover:text-brand-sunset transition">Privacy</Link></li>
