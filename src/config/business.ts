@@ -7,9 +7,9 @@
 
 export const business = {
   // --- Identity ---
-  legalName: "EG Evans Auto Services LLC",
-  shortName: "EG Evans Auto",
-  initials: "EG",
+  legalName: "E EVANS AUTO SERVICES LLC",
+  shortName: "E Evans Auto",
+  initials: "EE",
   tagline: "Coastal Luxury. Precision Service.",
   owner: "Elizabeth Evans",
   ownerTitle: "Founder & Lead Technician",
