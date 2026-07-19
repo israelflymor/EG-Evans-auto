@@ -110,7 +110,7 @@ export const testimonials = [
     vehicle: "2021 Toyota RAV4",
     rating: 5,
     quote:
-      "Chased a check-engine light at two other shops before EG Evans diagnosed it in an hour. Felt like the only customer in the place.",
+      "Chased a check-engine light at two other shops before E Evans diagnosed it in an hour. Felt like the only customer in the place.",
     date: "2025-11-02",
   },
   {
