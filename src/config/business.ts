@@ -48,9 +48,9 @@ export const business = {
   // --- Brand voice ---
   hero: {
     eyebrow: "Dahlonega · North Georgia",
-    headlineLineOne: "Precision Auto Care,",
+    headlineLineOne: "Elizabeth\u00a0 Evans",
     headlineLineTwo: "Coastal-Luxury Standard.",
-    sub: "From daily drivers to weekend exotics — EG Evans Auto Services delivers concierge-grade diagnostics, repair, and maintenance with the polish you'd expect from Miami's finest service houses.",
+    sub: "From daily drivers to weekend exotics — E. Evans Auto Services delivers concierge-grade diagnostics, repair, and maintenance with the polish you'd expect from Miami's finest service houses.",
     primaryCta: { label: "Book Service", to: "/contact" as const },
     secondaryCta: { label: "Browse Services", to: "/services" as const },
   },
