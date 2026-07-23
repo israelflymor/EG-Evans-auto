@@ -85,6 +85,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       ...(business.googleSiteVerification
         ? [{ name: "google-site-verification", content: business.googleSiteVerification }]
         : []),
+      { title: "Lovable App" },
+      { property: "og:title", content: "Lovable App" },
+      { name: "twitter:title", content: "Lovable App" },
+      { name: "description", content: "- Service Success Plan builds agency-grade, deployable lead-generation websites for local service businesses." },
+      { property: "og:description", content: "- Service Success Plan builds agency-grade, deployable lead-generation websites for local service businesses." },
+      { name: "twitter:description", content: "- Service Success Plan builds agency-grade, deployable lead-generation websites for local service businesses." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/aa18d2aa-b08e-4e34-ac67-448e41dcac63/id-preview-15a63a56--1f2bfc3c-770c-4437-951b-9611c648b72a.lovable.app-1784649445172.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/aa18d2aa-b08e-4e34-ac67-448e41dcac63/id-preview-15a63a56--1f2bfc3c-770c-4437-951b-9611c648b72a.lovable.app-1784649445172.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
